@@ -27,7 +27,11 @@
            id="password"
            [(ngModel)]="user.password"
            name="password"
-           required>
+           required
+           #email="ngModel">
+    <div *ngIf="!email.valid">
+      Invalid E-mail
+    </div>
   </div>
   <div class="radio" *ngFor="let g of genders">
     <label>
@@ -38,5 +42,5 @@
              {{g}}
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
